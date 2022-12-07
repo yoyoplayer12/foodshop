@@ -1,3 +1,3 @@
-const shoppingbasketScreen = ({ route, navigation }) => {
+const ShoppingbasketScreen = ({}) => {
 }
-export default shoppingbasketScreen;
+export default ShoppingbasketScreen;

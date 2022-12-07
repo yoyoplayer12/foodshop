@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import FoodScreen from './screens/foodScreen.js';
-import DetailScreen from './screens/detailScreen.js';
-import ShoppingBasketScreen from './screens/shoppingbasketScreen.js';
+import FoodScreen from './screens/FoodScreen.js';
+import DetailScreen from './screens/DetailScreen.js';
+import ShoppingBasketScreen from './screens/ShoppingbasketScreen.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,16 +19,7 @@ export default function App() {
     </NavigationContainer>
 
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  }
 
 
 

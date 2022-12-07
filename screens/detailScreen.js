@@ -1,3 +1,3 @@
-const detailScreen = ({ route, navigation }) => {
+const DetailScreen = ({}) => {
 }
-export default detailScreen;
+export default DetailScreen;
