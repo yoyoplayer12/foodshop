@@ -1,15 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import FoodScreen from './screens/foodScreen.js';
+import DetailScreen from './screens/detailScreen.js';
+import ShoppingBasketScreen from './screens/shoppingbasketScreen.js';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View>
-        <Text>FoodShop is open!</Text>
-        <StatusBar style="StatusBar.setStatusBarHidden(hidden, animation)" />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="The FoodShop" component={FoodScreen} />
+        <Stack.Screen name="Details" component={DetailScreen} />
+        <Stack.Screen name="Shoppingbasket" component={ShoppingBasketScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+
   );
 }
 
@@ -26,8 +34,19 @@ const styles = StyleSheet.create({
 
 
 
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
+// code van vorige apps may be interessant
+
+
+    // <SafeAreaView style={styles.container}>
+    //   <View>
+    //     <Text>FoodShop is open!</Text>
+    //   </View>
+    // </SafeAreaView>
+
+
+
 
 // import MoviesScreen from './screens/MoviesScreen';
 // import DetailsScreen from './screens/DetailsScreen';
