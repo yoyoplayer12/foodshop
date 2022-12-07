@@ -1,12 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>FoodShop is open!</Text>
-      <StatusBar style="StatusBar.setStatusBarHidden(hidden, animation)" />
+      <View>
+        <Text>FoodShop is open!</Text>
+        <StatusBar style="StatusBar.setStatusBarHidden(hidden, animation)" />
+      </View>
     </SafeAreaView>
   );
 }
