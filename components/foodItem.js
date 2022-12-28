@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const foodItem = props => {
+const FoodItem = props => {
   return (
     <TouchableOpacity activeOpacity={0.5} onPress={() => props.onSelectMovie(props.id)}>
       <View style={styles.listItem}>
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   }
 });
-export default foodItem;
+export default FoodItem;

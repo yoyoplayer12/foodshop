@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput } from 'react-native';
-
 import apiKey from '../apiKey';
-import foodItem from '../components/foodItem';
-let post_id = 1;
-const Title = await fetch("https://yorickdv.be/wp-json/wp/v2/posts?_fields[]=title")
-const Status = await fetch("https://yorickdv.be/wp-json/wp/v2/posts?_fields[]=title")
-const FoodScreen = ({ navigation }) => {
+import FoodItem from '../components/foodItem';
 
+// const Title = "https://yorickdv.be/wp-json/wp/v2/posts?_fields[]=title"
+// const PostStatus = "https://yorickdv.be/wp-json/wp/v2/posts?_fields[]=title"
+// const Excerpt = "https://yorickdv.be/wp-json/wp/v2/posts?_fields[]=excerpt.rendered"
+// const Content = "https://yorickdv.be/wp-json/wp/v2/posts?_fields[]=content.rendered"
+// const Id = "https://yorickdv.be/wp-json/wp/v2/posts?_fields[]=id"
+const Post = "https://yorickdv.be/wp-json/wp/v2/posts"
+let PostNum = -1
+
+
+
+
+
+
+
+const FoodScreen = ({ navigation }) => {
   const [foods, setFoods] = useState([]);
 
   const getFoodsByDefault = async () => {
+
+    //getting title
     try {
-      const response = await fetch("https://yorickdv.be/wp-json/wp/v2/posts/1?_fields[]=title", {
+      const response = await fetch(Post, {
         "method": "GET",
         "headers": {
           "x-rapidapi-host": "food144.p.rapidapi.com",
@@ -20,8 +32,12 @@ const FoodScreen = ({ navigation }) => {
         }
       })
       const json = await response.json();
-
-      console.log(json);
+      while (PostNum < json.length - 1){
+        PostNum++
+        let Title = json[PostNum].title.rendered
+        let Id = json[PostNum].id
+        console.log(Id);
+      }
       setFoods(json.results);
     } catch (error) {
       console.error(error);
@@ -41,7 +57,7 @@ const FoodScreen = ({ navigation }) => {
   const getFoodsByTitleSearch = async (enteredText) => {//argument meegegeven door onChangeText
     try {
       if (enteredText.length > 0) {
-        const url = encodeURI("https://yorickdv.be/wp-json/wp/v2/posts/" + enteredText + "/");
+        const url = encodeURI(Post + enteredText + "/");
         console.log(url);
         const response = await fetch(url, {
           "method": "GET",
@@ -70,9 +86,9 @@ const FoodScreen = ({ navigation }) => {
         data={foods}
         keyExtractor={item => item.imdb_id}//gebruik imdb_id als key voor de flatlist
         renderItem={({ item }) => (
-          <foodItem
-            id={item.imdb_id}
-            title={item.title}
+          <FoodItem
+            id={Id}
+            title={Title}
             navigation={navigation}
             onSelectMovie={(selectedId) => { navigation.navigate('Details', { movieId: selectedId }) }}
           />
