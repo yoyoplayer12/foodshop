@@ -8,16 +8,20 @@ import ShoppingBasketScreen from './screens/ShoppingbasketScreen.js';
 
 const Stack = createNativeStackNavigator();
 
+
+
+
+
+
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="The FoodShop" component={FoodScreen} />
+        <Stack.Screen name="The FoodShop 🍔" component={FoodScreen} />
         <Stack.Screen name="Details" component={DetailScreen} />
         <Stack.Screen name="Shoppingbasket" component={ShoppingBasketScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-
   );
   }
 
