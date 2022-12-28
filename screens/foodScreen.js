@@ -35,8 +35,10 @@ const FoodScreen = ({ navigation }) => {
       while (PostNum < json.length - 1){
         PostNum++
         let Title = json[PostNum].title.rendered
+        let Status = json[PostNum].status
+        let Excerpt = json[PostNum].excerpt.rendered
         let Id = json[PostNum].id
-        console.log(Id);
+        console.log(Title);
       }
       setFoods(json.results);
     } catch (error) {
