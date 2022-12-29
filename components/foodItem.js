@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 const FoodItem = props => {
+  console.log("test")
   return (
     <TouchableOpacity activeOpacity={0.5} onPress={() => props.onSelectMovie(props.id)}>
       <View style={styles.listItem}>
         <Text>{props.title}</Text>
       </View>
     </TouchableOpacity >
-
+      
   );
 }
 

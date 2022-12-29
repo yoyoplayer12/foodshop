@@ -8,7 +8,7 @@ import FoodItem from '../components/foodItem';
 // const Excerpt = "https://yorickdv.be/wp-json/wp/v2/posts?_fields[]=excerpt.rendered"
 // const Content = "https://yorickdv.be/wp-json/wp/v2/posts?_fields[]=content.rendered"
 // const Id = "https://yorickdv.be/wp-json/wp/v2/posts?_fields[]=id"
-const Post = "https://yorickdv.be/wp-json/wp/v2/posts"
+const Post = "https://yorickdv.be/wp-json/wp/v2/posts/"
 let PostNum = -1
 
 
@@ -38,7 +38,7 @@ const FoodScreen = ({ navigation }) => {
         let Status = json[PostNum].status
         let Excerpt = json[PostNum].excerpt.rendered
         let Id = json[PostNum].id
-        console.log(Title);
+        console.log("Food: " + Title);
       }
       setFoods(json.results);
     } catch (error) {
@@ -86,13 +86,13 @@ const FoodScreen = ({ navigation }) => {
       />
       <FlatList
         data={foods}
-        keyExtractor={item => item.imdb_id}//gebruik imdb_id als key voor de flatlist
+        keyExtractor={item => item.food_id}//gebruik imdb_id als key voor de flatlist
         renderItem={({ item }) => (
           <FoodItem
-            id={Id}
-            title={Title}
+            id={item.Id}
+            title={item.Title}
             navigation={navigation}
-            onSelectMovie={(selectedId) => { navigation.navigate('Details', { movieId: selectedId }) }}
+            onSelectFood={(selectedId) => { navigation.navigate('Details', { foodId: selectedId }) }}
           />
         )}
       />
@@ -112,47 +112,5 @@ const styles = StyleSheet.create({
   }
 
 });
-
-
-// 	/**
-// 	 * Filters the post title.
-// 	 *
-// 	 * @since 0.71
-// 	 *
-// 	 * @param string $post_title The post title.
-// 	 * @param int    $post_id    The post ID.
-// 	 */
-// 	return apply_filters( 'the_title', $post_title, $post_id );
-
-// import { StyleSheet, Text, View, SafeAreaView, Button } from 'react-native';
-// import ShoppingbasketScreen from './ShoppingbasketScreen';
-
-// const FoodScreen = ({navigation}) => {
-//     return(
-//         <SafeAreaView style={styles.screen}>
-//             <View style={styles.lebutton}>
-//                 {/* <Button
-//                     title="Go to Shopping Basket"
-//                     color={"white"}
-//                     onPress={() => navigation.navigate(ShoppingbasketScreen)}
-//                 /> */}
-//             </View>
-//         </SafeAreaView>
-//     );
-// }
-
-// const styles = StyleSheet.create({
-//   screen: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     color: 'black',
-//     alignItems: 'center',
-//     justifyContent: 'top',
-//   },
-//   lebutton: {
-//     backgroundColor:'black',
-//   },
-// });
-// export default FoodScreen;
 
 export default FoodScreen;
